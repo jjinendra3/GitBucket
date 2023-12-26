@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "start-frontend": "cd client && npm run dev",
+    "start-backend": "cd server && nodemon init",
+    "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue,bgYellow\" -p \"[{name}]\" \"npm run start-frontend\" \"npm run start-backend\"",
+    "install-frontend": "cd client && npm i",
+    "install-backend": "cd server && npm i",
+    "installer": "npm i && npm run install-backend && npm run install-frontend"
+  }
+}
