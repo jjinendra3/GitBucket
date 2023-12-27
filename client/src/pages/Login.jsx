@@ -1,42 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import Context from "../ContextAPI";
 import axios from 'axios'
  function Login() {
+  const context=useContext(Context);
   const [login, setLogin] = useState({
     id: "",
     pw: "",
   });
-   const Loginer =async () => {
-    if (login.id === "" || login.pw === "") {
-     alert("Please enter all the fields to login.");
-      return;
-    }
-    await axios
-      .post("http://localhost:5000/auth/login", {
-        id: login.id,
-        pw: login.pw,
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.data.s === false) {
-          throw res.data.error;
-        }
-        // setjwt_token(res.data.token);
-        // setuser_details(res.data.obj);
-       alert(`Welcome to HiChat, ${res.data.obj.name}`);
-        // navigate("/");
-      })
-      .catch((error) => {
-       alert(error);
-      });
-  };
+  
   const onChange = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
   };
 
   const handleLogin = async(event) => {
     event.preventDefault();
-    await Loginer();
+    await context.Loginer(login);
     setLogin({
       id: "",
       pw: "",

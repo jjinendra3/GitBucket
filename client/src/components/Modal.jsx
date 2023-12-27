@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
-export default function Modal({ setmod,readme,setreadme,sethasReadme }) {
+export default function Modal({ setmod,readme }) {
 const [reader, setreader] = useState("")
   useEffect(() => {
     setreader(readme);
@@ -13,9 +13,7 @@ const [reader, setreader] = useState("")
   const handleSave=async()=>{
     const response= await axios.post("http://localhost:5000/profile/readme",{readme:reader});
     console.log(response);
-    setreadme(response.data.readme);
     setreader(null);
-    sethasReadme(true);
     setmod(false);
   }
   const handleClose=()=>{

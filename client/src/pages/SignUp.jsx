@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import {toast} from 'react-toastify';
 import axios from "axios";
+import Context from "../ContextAPI";
+
 const SignUp = () => {
+const context=useContext(Context);
   const [signup, setSignup] = useState({
     username: "",
     name: "",
@@ -12,70 +15,12 @@ const SignUp = () => {
     bio: "",
     portfolio:""
   });
-  function ValidateEmail(mail) {
-    // eslint-disable-next-line
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return false;
-    }
-    return true;
-  }
   const onChange = (event) => {
     setSignup({ ...signup, [event.target.name]: event.target.value });
   };
-  const Signuper =async () => {
-    console.log(signup)
-    if (
-      signup.bio.length>=500
-    ) {
-     alert("Bio should be less than 500 characters.");
-      return;
-    }
-    if (
-      signup.pw === "" ||
-      signup.email === "" ||
-      signup.name === "" ||
-      signup.username === ""
-    ) {
-     alert("No field should be left empty.");
-      return;
-    }
-    if (ValidateEmail(signup.email)) {
-     alert("Please enter a valid email ID.");
-      return;
-    }
-    if (signup.pw.length < 8) {
-     alert("Password should be of minimum 8 characters.");
-      return;
-    }
-  
-    await axios
-      .post("http://localhost:5000/auth/signup", {
-        name: signup.name,
-        username: signup.username,
-        email: signup.email,
-        password: signup.pw,
-        linkedin:signup.linkedin,
-        bio:signup.bio,
-        portfolio:signup.portfolio,
-        friends: [{ friend_id: "init"}],
-      })
-      .then((res) => {
-        console.log(res);
-
-        console.log("Done");
-      //  alert(`Welcome to HiChat, ${signup.name}`);
-        // navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-      //  alert(
-      //     "The Email or the username number is already in use, please try again!"
-      //   );
-      });
-  };
   const onSubmit = async (event) => {
     event.preventDefault();
-    await Signuper();
+    await context.Signuper(signup);
     setSignup({
       username: "",
       name: "",

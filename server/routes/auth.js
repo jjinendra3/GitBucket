@@ -68,6 +68,7 @@ app.post("/login", async (req, res) => {
         bio: user_detail.bio,
         portfolio: user_detail.portfolio,
         friends: user_detail.friends,
+        readme: user_details.readme
       };
       jwt.sign(obj.key, privateKey, function (err, token) {
         if (err) {

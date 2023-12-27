@@ -1,19 +1,19 @@
-import React, { useState,useEffect } from "react";
-import Modal from '../components/Modal'
+import React, { useState, useEffect, useContext } from "react";
+import Modal from "../components/Modal";
+import Context from "../ContextAPI";
+import RepoList from "../components/RepoList";
 const ProfilePage = () => {
-  const [hasReadme, sethasReadme] = useState(false);
+  const context = useContext(Context);
   const [modal, setmodal] = useState(false);
-  const linkedin = "s";
-  const portfolio = "null";
-  const [readme, setreadme] = useState("");
   const [rows, setRows] = useState(1);
-  const content="dej";
+  const { name, username, bio, linkedin, portfolio, readme } =
+    context.user_details;//handle the readme properly 
   useEffect(() => {
-    const textarea = document.getElementById('auto-adjust-textarea');
+    const textarea = document.getElementById("auto-adjust-textarea");
     if (textarea) {
       const lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
       const rowsRequired = Math.ceil(textarea.scrollHeight / lineHeight);
-      setRows(rowsRequired-1);
+      setRows(rowsRequired - 1);
     }
   }, []);
   return (
@@ -26,20 +26,21 @@ const ProfilePage = () => {
           className="h-96 w-96 rounded-full p-3 mx-auto"
         />
         <div className="text-center">
-          <h2 className="text-2xl font-bold">John Doe</h2>
+          <h2 className="text-2xl font-bold">{username}</h2>
+          <h2 className="text-2xl font-bold">{name}</h2>
           <div className="m-2">
-          <textarea
-      id="auto-adjust-textarea"
-      className="form-input px-4 py-2 rounded-md bg-primary text-white text-center"
-      disabled={true}
-      value={content}
-      rows={rows}
-      cols="50"
-    ></textarea>
+            <textarea
+              id="auto-adjust-textarea"
+              className="form-input px-4 py-2 rounded-md bg-primary text-white text-center"
+              disabled={true}
+              value={bio}
+              rows={rows}
+              cols="50"
+            ></textarea>
           </div>
         </div>
         <div className="items-center flex justify-around">
-          {linkedin && (
+          {linkedin !== "" && (
             <a
               href="https://www.linkedin.com/in/your-linkedin-profile"
               target="_blank"
@@ -49,7 +50,7 @@ const ProfilePage = () => {
               LinkedIn
             </a>
           )}
-          {portfolio && (
+          {portfolio !== "" && (
             <a
               href="https://www.linkedin.com/in/your-linkedin-profile"
               target="_blank"
@@ -62,15 +63,14 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className=" border-2 border-white w-2/3 ">
-        {hasReadme?<div className="h-full w-full bg-gray-800  p-4" dangerouslySetInnerHTML={{ __html: readme }}>
-          {/* <pre>{readme}
-          </pre> */}
-        </div>:<div className="h-full w-full bg-gray-800  p-4 flex justify-center items-center"><button 
-        className="bg-blue-500 hover:bg-white text-white hover:text-black py-2 px-4 rounded mb-2" onClick={()=>{
-          setmodal(true);
-        }}>Add Readme</button></div>}
+       <RepoList/>
       </div>
-      {modal && <Modal setmod={setmodal} setreadme={setreadme} readme={readme} sethasReadme={sethasReadme}/>}
+      {modal && (
+        <Modal
+          setmod={setmodal}
+          readme={readme}
+        />
+      )}
     </div>
   );
 };
