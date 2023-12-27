@@ -25,6 +25,12 @@ const SignUp = () => {
   const Signuper =async () => {
     console.log(signup)
     if (
+      signup.bio.length>=500
+    ) {
+     alert("Bio should be less than 500 characters.");
+      return;
+    }
+    if (
       signup.pw === "" ||
       signup.email === "" ||
       signup.name === "" ||

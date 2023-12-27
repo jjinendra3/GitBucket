@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
-import Home from "./pages/Home";
+import ProfilePage from "./pages/Home";
 import Navbar from "./components/Navbars";
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<ProfilePage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
