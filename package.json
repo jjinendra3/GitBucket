@@ -9,5 +9,8 @@
     "install-frontend": "cd client && npm i",
     "install-backend": "cd server && npm i",
     "installer": "npm i && npm run install-backend && npm run install-frontend"
+  },
+  "devDependencies": {
+    "prettier": "3.1.1"
   }
 }

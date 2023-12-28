@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
 
 function ProfileReadme() {
   return (
-    <div> {readme === "" ? (
+    <div>
+      {" "}
+      {readme === "" ? (
         <div
           className="h-full w-full bg-gray-800  p-4"
           dangerouslySetInnerHTML={{ __html: readme }}
@@ -18,8 +20,9 @@ function ProfileReadme() {
             Add Readme
           </button>
         </div>
-      )}</div>
-  )
+      )}
+    </div>
+  );
 }
 
-export default ProfileReadme
+export default ProfileReadme;

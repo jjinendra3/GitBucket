@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios'   
+import axios from "axios";
 const FileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [totalSizeExceeded, setTotalSizeExceeded] = useState(false);
@@ -25,27 +25,27 @@ const FileUpload = () => {
       formData.append(`files`, file);
     });
 
-    axios.post('http://localhost:5000/files/upload', formData)
-      .then(response => {
-        console.log('Upload successful', response.data);
+    axios
+      .post("http://localhost:5000/files/upload", formData)
+      .then((response) => {
+        console.log("Upload successful", response.data);
       })
-      .catch(error => {
-        console.error('Upload failed', error);
+      .catch((error) => {
+        console.error("Upload failed", error);
       });
   };
 
   return (
     <div>
-      <input
-        type="file"
-        multiple
-        onChange={handleFileChange}
-        accept="*/*"
-      />
+      <input type="file" multiple onChange={handleFileChange} accept="*/*" />
       {totalSizeExceeded && (
         <p style={{ color: "red" }}>Total size exceeds the limit (5 MB).</p>
       )}
-      <button onClick={handleUpload} disabled={totalSizeExceeded} className="bg-blue-900">
+      <button
+        onClick={handleUpload}
+        disabled={totalSizeExceeded}
+        className="bg-blue-900"
+      >
         Upload Files
       </button>
     </div>

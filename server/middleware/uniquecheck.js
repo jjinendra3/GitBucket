@@ -1,6 +1,6 @@
 const User = require("../models/Users");
 const checker = async (req, res, next) => {
-  const { email,username } = req.body;
+  const { email, username } = req.body;
   try {
     let user_mail = await User.findOne({ email: email });
     let usernamer = await User.findOne({ username: username });

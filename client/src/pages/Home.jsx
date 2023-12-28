@@ -7,7 +7,7 @@ const ProfilePage = () => {
   const [modal, setmodal] = useState(false);
   const [rows, setRows] = useState(1);
   const { name, username, bio, linkedin, portfolio, readme } =
-    context.user_details;//handle the readme properly 
+    context.user_details; //handle the readme properly
   useEffect(() => {
     const textarea = document.getElementById("auto-adjust-textarea");
     if (textarea) {
@@ -63,14 +63,9 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className=" border-2 border-white w-2/3 ">
-       <RepoList/>
+        <RepoList />
       </div>
-      {modal && (
-        <Modal
-          setmod={setmodal}
-          readme={readme}
-        />
-      )}
+      {modal && <Modal setmod={setmodal} readme={readme} />}
     </div>
   );
 };

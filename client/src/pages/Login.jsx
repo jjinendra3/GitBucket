@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../ContextAPI";
-import axios from 'axios'
- function Login() {
-  const context=useContext(Context);
+import axios from "axios";
+function Login() {
+  const context = useContext(Context);
   const [login, setLogin] = useState({
     id: "",
     pw: "",
   });
-  
+
   const onChange = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
   };
 
-  const handleLogin = async(event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     await context.Loginer(login);
     setLogin({
@@ -25,12 +25,15 @@ import axios from 'axios'
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-primary">
       <div className="title flex justify-center items-center text-white mb-2 text-2xl font-bold">
-      <h1 className="text-5xl text-white my-8 font-bold">🚀Login</h1>
+        <h1 className="text-5xl text-white my-8 font-bold">🚀Login</h1>
       </div>
       <div className="login flex flex-col items-center">
         <form className="w-full max-w-md">
           <div className="mb-4">
-            <label htmlFor="inputEmail" className="block text-white text-sm font-semibold mb-2">
+            <label
+              htmlFor="inputEmail"
+              className="block text-white text-sm font-semibold mb-2"
+            >
               Email/Id
             </label>
             <input
@@ -41,10 +44,12 @@ import axios from 'axios'
               value={login.id}
               onChange={onChange}
             />
-           
           </div>
           <div className="mb-4">
-            <label htmlFor="inputPassword" className="block text-white text-sm font-semibold mb-2">
+            <label
+              htmlFor="inputPassword"
+              className="block text-white text-sm font-semibold mb-2"
+            >
               Password
             </label>
             <input
@@ -67,7 +72,11 @@ import axios from 'axios'
           </div>
           <div className="flex justify-center">
             <p className="text-white">
-              Not a User? <Link to="/signup" className="text-blue-500">Signup</Link> Now!
+              Not a User?{" "}
+              <Link to="/signup" className="text-blue-500">
+                Signup
+              </Link>{" "}
+              Now!
             </p>
           </div>
         </form>

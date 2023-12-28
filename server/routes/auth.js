@@ -5,7 +5,7 @@ const uniqueness = require("../middleware/uniquecheck");
 const User = require("../models/Users");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 app.post("/signup", uniqueness, async (req, res) => {
@@ -27,7 +27,7 @@ app.post("/signup", uniqueness, async (req, res) => {
             obj.password = hash;
             let user = await User.create(obj);
           }
-        }
+        },
       );
       return res.send("Sucessful");
     } catch (error) {
@@ -68,7 +68,7 @@ app.post("/login", async (req, res) => {
         bio: user_detail.bio,
         portfolio: user_detail.portfolio,
         friends: user_detail.friends,
-        readme: user_details.readme
+        readme: user_details.readme,
       };
       jwt.sign(obj.key, privateKey, function (err, token) {
         if (err) {

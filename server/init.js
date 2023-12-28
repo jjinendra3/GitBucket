@@ -10,6 +10,7 @@ app.use(express.json());
 app.use("/auth", require("./routes/auth"));
 app.use("/profile", require("./routes/profile"));
 app.use("/files", require("./routes/file"));
+app.use("/repos", require("./routes/repo"));
 app.listen(5000, () => {
   console.log("ghb");
 });

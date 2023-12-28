@@ -1,11 +1,5 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const Friends = new Schema({
-  friend_id: {
-    type: String,
-    required: true,
-  }
-});
 const Userschema = new Schema({
   name: {
     type: String,
@@ -37,10 +31,12 @@ const Userschema = new Schema({
   },
   friends: {
     type: Array,
-    default: [Friends],
   },
-  readme:{
-    type:String,
-  }
+  repos: {
+    type: Array,
+  },
+  readme: {
+    type: String,
+  },
 });
 module.exports = mongoose.model("user", Userschema);
