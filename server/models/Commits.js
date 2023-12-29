@@ -7,7 +7,7 @@ const filestrr = new Schema({
   oldline: {
     type: String,
   },
-  newstring: {
+  newline: {
     type: String,
   },
 });

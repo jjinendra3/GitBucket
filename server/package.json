@@ -10,6 +10,7 @@
     "markdown-it": "^14.0.0",
     "mongoose": "^7.4.2",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "readline-promise": "^1.0.5"
   }
 }
