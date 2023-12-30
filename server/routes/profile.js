@@ -1,24 +1,26 @@
 const express = require("express");
 const app = express.Router();
-const markdownit = require("markdown-it");
 const CheckUser = require("../middleware/CheckUser");
-const md = markdownit();
-// CheckUser
+const User=require('../models/Users')
+const ObjectId = require("mongoose").Types.ObjectId;
 app.post("/readme", async (req, res) => {
   // if (!req.checker) {
   //   return res.send("Invalid JWT Token");
   // }
   try {
-    const { readme } = req.body;
-    const response = await md.render(readme);
-    try {
-      return res.send({ readme: response });
-    } catch (error) {
-      return res.send("Error");
+    const { userId, readme } = req.body;
+    const user = await User.findById(new ObjectId(userId));
+    if (!user) {
+      return res.status(404).send("User not found");
     }
+    user.readme = readme;
+    await user.save();
+    return res.send("Done");
   } catch (error) {
-    return res.send("error");
+    console.error(error);
+    return res.status(500).send("Internal Server Error");
   }
+
 });
 
 module.exports = app;

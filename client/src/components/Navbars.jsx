@@ -66,7 +66,7 @@ const Navbar = () => {
                       Dashboard
                     </Link>
                     <Link
-                      to="repos"
+                      to="/repos"
                       className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                       aria-current="page"
                     >
@@ -137,13 +137,13 @@ const Navbar = () => {
               >
                 Dashboard
               </a>
-              <a
-                href="#"
+              <Link
+                to="/repos"
                 className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
               >
                 Repositories
-              </a>
+              </Link>
               <a
                 href="#"
                 className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"

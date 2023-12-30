@@ -1,20 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-export default function Modal({ setmod, readme }) {
+import Context from "../ContextAPI";
+
+export default function Modal({ setmod }) {
+  const context=useContext(Context)
   const [reader, setreader] = useState("");
-  useEffect(() => {
-    setreader(readme);
-  }, []);
 
   const handleInputChange = (event) => {
     setreader(event.target.value);
   };
   const handleSave = async () => {
-    const response = await axios.post("http://localhost:5000/profile/readme", {
-      readme: reader,
-    });
-    console.log(response);
-    setreader(null);
+    // const response = await axios.post("http://localhost:5000/profile/readme", {
+     //  userId:contetx.user_details._id,
+    //   readme: reader,
+    // });
+    // console.log(response);
+    await context.setuser_details((prevState) => ({
+      ...prevState,
+      readme: reader
+    }));
+     setreader(null);
     setmod(false);
   };
   const handleClose = () => {
@@ -27,7 +32,7 @@ export default function Modal({ setmod, readme }) {
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
           <div className="relative  my-6 mx-auto max-w-3xl bg-gray-700 p-5  rounded-lg w-1/2 text-text-col">
             <div className="text-3xl font-extrabold text-center mb-4">
-              {readme === "" ? "Add Readme" : "Edit Readme"}
+              Add Readme
             </div>
             <textarea
               name="bio"

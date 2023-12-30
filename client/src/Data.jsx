@@ -87,7 +87,7 @@ const ContextData = ({ children }) => {
       });
   };
   return (
-    <Context.Provider value={{ Signuper, Loginer, user_details, jwt_token }}>
+    <Context.Provider value={{ Signuper, Loginer, user_details,setuser_details, jwt_token }}>
       {children}
     </Context.Provider>
   );
