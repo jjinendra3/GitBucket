@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import ProfilePage from "./pages/Home";
 import Navbar from "./components/Navbars";
+import RepoPage from "./pages/RepoPage";
 function App() {
   return (
     <div>

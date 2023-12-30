@@ -6,6 +6,9 @@ export default {
       backgroundColor: {
         primary: "#0e1116",
       },
+      colors: {
+        neon: "#A6FF96",
+      },
     },
   },
   darkMode: "class",
