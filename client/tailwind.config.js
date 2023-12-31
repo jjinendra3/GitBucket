@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         neon: "#A6FF96",
+        prim: "#0e1116",
       },
     },
   },

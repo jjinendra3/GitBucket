@@ -4,13 +4,15 @@ import Signup from "./pages/SignUp";
 import ProfilePage from "./pages/Home";
 import Navbar from "./components/Navbars";
 import RepoPage from "./pages/RepoPage";
+import CommitList from './pages/CommitList'
+import CommitPage from './pages/CommitPage'
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<ProfilePage />} />
+          <Route path="/" element={<CommitPage />} />
           <Route path="/repos" element={<ProfilePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
