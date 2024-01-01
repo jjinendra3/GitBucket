@@ -24,11 +24,11 @@ function App() {
       <div>
         <h2 className="text-2xl font-bold mb-4">About the Developer</h2>
         <p className="text-lg mb-2">
-          Jinendra Jain - Second Year Computer Science Engineering (CSE) undergraduate at JIIT Noida.
+          Jinendra Jain - Second Year Computer Science Engineering undergraduate at JIIT Noida.
         </p>
         <div className="flex space-x-4 justify-center mb-8">
           <a
-            href="https://www.linkedin.com/in/your-linkedin"
+            href="https://www.linkedin.com/in/jjinendra3"
             className="text-blue-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"
@@ -36,12 +36,20 @@ function App() {
             LinkedIn
           </a>
           <a
-            href="https://github.com/your-github"
+            href="https://github.com/jjinendra3"
             className="text-blue-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"
             >
             GitHub
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/1LHB23yPVM1_arEIQPnBag7Uxyih0VGeb?usp=sharing"
+            className="text-blue-500 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            Resume
           </a>
         </div>
         
@@ -53,7 +61,7 @@ function App() {
         </p>
         <div className="flex space-x-4 justify-center">
           <a
-            href="https://github.com/your-github/ghb"
+            href="https://github.com/jjinendra3/ghb"
             className="text-blue-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"

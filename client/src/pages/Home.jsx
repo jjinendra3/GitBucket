@@ -68,7 +68,7 @@ const ProfilePage = () => {
       <div className=" bg-gray-800 w-2/3 ">
         {location.pathname === "/repos" ? (
           <RepoList />
-        ) : readme == null ? (
+        ) : readme === "" ? (
           <div className="flex items-center justify-center w-full h-full text-center">
             <div className="flex-row">
 

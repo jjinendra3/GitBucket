@@ -1,9 +1,14 @@
 import { useState } from "react";
 import Context from "./ContextAPI";
 import axios from "axios";
+import {uid} from 'uid';
+import { useNavigate } from "react-router-dom";
 const ContextData = ({ children }) => {
+  const navigate=useNavigate();
   const [jwt_token, setjwt_token] = useState(null);
   const [user_details, setuser_details] = useState({});
+  const [session, setsession] = useState(null);
+  const [repo, setrepo] = useState({})
   function ValidateEmail(mail) {
     // eslint-disable-next-line
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -12,7 +17,6 @@ const ContextData = ({ children }) => {
     return true;
   }
   const Signuper = async (signup) => {
-    console.log(signup);
     if (signup.bio.length >= 500) {
       alert("Bio should be less than 500 characters.");
       return;
@@ -44,16 +48,15 @@ const ContextData = ({ children }) => {
         linkedin: signup.linkedin,
         bio: signup.bio,
         portfolio: signup.portfolio,
-        friends: ["init"],
+        friends: [{name:"init",id:"init"}],
         readme: "",
-        repos: ["init"],
+        repos: [],
       })
       .then((res) => {
         console.log(res);
-
         console.log("Done");
         alert(`Welcome to GHB, ${signup.name}`);
-        // navigate("/login");
+        navigate('/login');
       })
       .catch((error) => {
         console.log(error);
@@ -79,15 +82,37 @@ const ContextData = ({ children }) => {
         }
         setjwt_token(res.data.token);
         setuser_details(res.data.obj);
+        let ok=uid(16);
+        setsession(ok);
         alert(`Welcome to GHB, ${res.data.obj.name}`);
-        // navigate("/");
+        navigate(`/home?session=${ok}`);
       })
       .catch((error) => {
         alert(error);
       });
   };
+  const AddRepo=async(name, type)=>{
+    try {
+      const response=await axios.post("http://localhost:5000/repos/create",{
+        name:name,type:type,userid:user_details.key
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const GetRepo=async(id)=>{
+    try {
+      // let ids=id.toString();
+      // console.log(id);
+      const response=await axios.get(`http://localhost:5000/repos/getrepo/${id}`);
+      return response.data.repo;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
-    <Context.Provider value={{ Signuper, Loginer, user_details,setuser_details, jwt_token }}>
+    <Context.Provider value={{ Signuper, Loginer, user_details,setuser_details, jwt_token,setjwt_token,session,AddRepo,GetRepo,repo,setrepo }}>
       {children}
     </Context.Provider>
   );

@@ -5,21 +5,20 @@ import Context from "../ContextAPI";
 export default function Modal({ setmod }) {
   const context=useContext(Context)
   const [reader, setreader] = useState("");
-
   const handleInputChange = (event) => {
     setreader(event.target.value);
   };
   const handleSave = async () => {
-    // const response = await axios.post("http://localhost:5000/profile/readme", {
-     //  userId:contetx.user_details._id,
-    //   readme: reader,
-    // });
-    // console.log(response);
+    const response = await axios.post("http://localhost:5000/profile/readme", {
+      userId:context.user_details.key,
+      readme: reader,
+    });
+    console.log(response);
     await context.setuser_details((prevState) => ({
       ...prevState,
       readme: reader
     }));
-     setreader(null);
+    setreader(null);
     setmod(false);
   };
   const handleClose = () => {

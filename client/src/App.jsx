@@ -10,15 +10,14 @@ import Landing from './pages/Landing'
 function App() {
   return (
     <div>
-      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<ProfilePage/>}/>
           <Route path="/repos" element={<ProfilePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

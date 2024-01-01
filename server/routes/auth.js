@@ -68,7 +68,8 @@ app.post("/login", async (req, res) => {
         bio: user_detail.bio,
         portfolio: user_detail.portfolio,
         friends: user_detail.friends,
-        readme: user_details.readme,
+        readme: user_detail.readme,
+        repos:user_detail.repos
       };
       jwt.sign(obj.key, privateKey, function (err, token) {
         if (err) {
@@ -78,7 +79,7 @@ app.post("/login", async (req, res) => {
       });
     });
   } catch (error) {
-    return error;
+    return res.send({ s: false });
   }
 });
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Context from "../ContextAPI";
-
 const SignUp = () => {
   const context = useContext(Context);
   const [signup, setSignup] = useState({
@@ -20,7 +19,8 @@ const SignUp = () => {
   };
   const onSubmit = async (event) => {
     event.preventDefault();
-    await context.Signuper(signup);
+    try {
+      await context.Signuper(signup);
     setSignup({
       username: "",
       name: "",
@@ -28,8 +28,12 @@ const SignUp = () => {
       pw: "",
       linkedin: "",
       bio: "",
-      portfolio: "",
+      portfolio: ""
     });
+    } catch (error) {
+      alert(error);
+    }
+    
   };
 
   return (

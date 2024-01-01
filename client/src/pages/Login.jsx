@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../ContextAPI";
-import axios from "axios";
 function Login() {
   const context = useContext(Context);
   const [login, setLogin] = useState({
@@ -15,11 +14,15 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    try {
     await context.Loginer(login);
     setLogin({
       id: "",
       pw: "",
-    });
+    }); 
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
