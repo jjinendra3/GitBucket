@@ -4,20 +4,21 @@ import Signup from "./pages/SignUp";
 import ProfilePage from "./pages/Home";
 import Navbar from "./components/Navbars";
 import RepoPage from "./pages/RepoPage";
-import CommitList from './pages/CommitList'
-import CommitPage from './pages/CommitPage'
-import Landing from './pages/Landing'
+import CommitList from "./pages/CommitList";
+import CommitPage from "./pages/CommitPage";
+import Landing from "./pages/Landing";
 function App() {
   return (
     <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<ProfilePage/>}/>
-          <Route path="/repos" element={<ProfilePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<ProfilePage />} />
+        <Route path="/repos" element={<ProfilePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/repopage" element={<RepoPage />} />
+      </Routes>
     </div>
   );
 }

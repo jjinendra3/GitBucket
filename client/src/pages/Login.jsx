@@ -15,11 +15,11 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-    await context.Loginer(login);
-    setLogin({
-      id: "",
-      pw: "",
-    }); 
+      await context.Loginer(login);
+      setLogin({
+        id: "",
+        pw: "",
+      });
     } catch (error) {
       alert(error);
     }

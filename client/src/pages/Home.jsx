@@ -71,17 +71,19 @@ const ProfilePage = () => {
         ) : readme === "" ? (
           <div className="flex items-center justify-center w-full h-full text-center">
             <div className="flex-row">
-
-            <div className=" text-3xl font-bold mb-4">
-            Please create a readme file.
-            </div>
-            <div>
-            <button onClick={()=>{
-              setmodal(true);
-            }}
-            
-            className="bg-blue-500 text-white py-2 px-4 rounded">Create Readme</button>
-            </div>
+              <div className=" text-3xl font-bold mb-4">
+                Please create a readme file.
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    setmodal(true);
+                  }}
+                  className="bg-blue-500 text-white py-2 px-4 rounded"
+                >
+                  Create Readme
+                </button>
+              </div>
             </div>
           </div>
         ) : (

@@ -69,7 +69,7 @@ app.post("/login", async (req, res) => {
         portfolio: user_detail.portfolio,
         friends: user_detail.friends,
         readme: user_detail.readme,
-        repos:user_detail.repos
+        repos: user_detail.repos,
       };
       jwt.sign(obj.key, privateKey, function (err, token) {
         if (err) {

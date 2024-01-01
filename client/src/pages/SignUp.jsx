@@ -21,19 +21,18 @@ const SignUp = () => {
     event.preventDefault();
     try {
       await context.Signuper(signup);
-    setSignup({
-      username: "",
-      name: "",
-      email: "",
-      pw: "",
-      linkedin: "",
-      bio: "",
-      portfolio: ""
-    });
+      setSignup({
+        username: "",
+        name: "",
+        email: "",
+        pw: "",
+        linkedin: "",
+        bio: "",
+        portfolio: "",
+      });
     } catch (error) {
       alert(error);
     }
-    
   };
 
   return (

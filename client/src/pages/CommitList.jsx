@@ -10,7 +10,7 @@ const RepositoryPage = () => {
   ]);
 
   const repoDetails = {
-    id:'ekjebeb927389232hjbehwd',
+    id: "ekjebeb927389232hjbehwd",
     name: "Adsus",
     filearr: files,
     type: true,
@@ -25,7 +25,9 @@ const RepositoryPage = () => {
       <div className="container mx-auto mt-8 p-8">
         <div className="p-8 bg-gray-800 rounded-md justify-between flex">
           <div className="flex-row">
-            <h1 className="text-4xl font-bold mb-2">{repoDetails.name} Commits</h1>
+            <h1 className="text-4xl font-bold mb-2">
+              {repoDetails.name} Commits
+            </h1>
             <div className="font-light">
               {repoDetails.type ? "Private" : "Public"}
             </div>
@@ -44,18 +46,18 @@ const RepositoryPage = () => {
                 className="flex items-center justify-between bg-gray-700 p-4 rounded-md"
               >
                 <div className="font-bold text-xl ml-4">
-                  <button className="hover:underline">{file.name}</button></div>
+                  <button className="hover:underline">{file.name}</button>
+                </div>
                 <div className="space-x-2 text-center">
-                    
-                    <div>✅</div>
-                    <div className="font-thin text-sm">Approved By GHB</div>  
+                  <div>✅</div>
+                  <div className="font-thin text-sm">Approved By GHB</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      {mod && <AddFileModal setmod={setmod} id={repoDetails.id}/>}
+      {mod && <AddFileModal setmod={setmod} id={repoDetails.id} />}
     </div>
   );
 };

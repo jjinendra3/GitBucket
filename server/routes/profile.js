@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express.Router();
 const CheckUser = require("../middleware/CheckUser");
-const User=require('../models/Users')
+const User = require("../models/Users");
 const ObjectId = require("mongoose").Types.ObjectId;
 app.post("/readme", async (req, res) => {
   // if (!req.checker) {
@@ -20,7 +20,6 @@ app.post("/readme", async (req, res) => {
     console.error(error);
     return res.status(500).send("Internal Server Error");
   }
-
 });
 
 module.exports = app;

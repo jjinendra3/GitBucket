@@ -8,7 +8,7 @@ const Users = require("../models/Users");
 const ObjectId = require("mongoose").Types.ObjectId;
 const readline = require("readline");
 var currentdate = new Date();
-const archiver=require('archiver');
+const archiver = require("archiver");
 const response = [];
 var datetime =
   currentdate.getDay() +
@@ -116,41 +116,41 @@ app.post("/upload", upload.array("files"), async (req, res) => {
     }
     //insert this commit in repo array
     //change the no of files in repo array
-    const submit=await Commits.create(FinalObj);
-    res.status(200).json({ id:submit, message:"Sucess!" });
+    const submit = await Commits.create(FinalObj);
+    res.status(200).json({ id: submit, message: "Sucess!" });
   } catch (error) {
     console.error("Error handling file upload:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-app.post('/download-folder', async(req, res) => {
-  const {username,reponame}=req.body;
-  const folderPath=`C:/Users/asus/Desktop/repositorytest/${username}/${reponame}`;
-  const zipFilePath=`C:/Users/asus/Desktop/repositorytest/${username}/${reponame}/${reponame}.zip`;
+app.post("/download-folder", async (req, res) => {
+  const { username, reponame } = req.body;
+  const folderPath = `C:/Users/asus/Desktop/repositorytest/${username}/${reponame}`;
+  const zipFilePath = `C:/Users/asus/Desktop/repositorytest/${username}/${reponame}/${reponame}.zip`;
   const output = await fs.createWriteStream(zipFilePath);
-  const archive = await archiver('zip', { zlib: { level: 9 } });
-  output.on('close', () => {
+  const archive = await archiver("zip", { zlib: { level: 9 } });
+  output.on("close", () => {
     console.log(`Folder "${folderPath}" has been zipped to "${zipFilePath}"`);
-    
+
     res.download(zipFilePath);
     fs.unlinkSync(zipFilePath);
     return;
   });
 
-  archive.on('error', (err) => {
+  archive.on("error", (err) => {
     throw err;
   });
   archive.pipe(output);
   archive.directory(folderPath, false);
   archive.finalize();
-   
 });
 
-app.post('/deletefile',(req,res)=>{
-  const {username,reponame,filename}=req.body;
-  fs.unlinkSync(`C:/Users/asus/Desktop/repositorytest/${username}/${reponame}/${filename}`);
+app.post("/deletefile", (req, res) => {
+  const { username, reponame, filename } = req.body;
+  fs.unlinkSync(
+    `C:/Users/asus/Desktop/repositorytest/${username}/${reponame}/${filename}`,
+  );
   res.send("Done");
-})
+});
 module.exports = app;
